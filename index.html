@@ -1,12 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello, World!</title>
+<meta charset="UTF-8">
+<title>Oracles in DLCs</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        line-height: 1.6;
+        max-width: 900px;
+    }
+    h1, h2, h3 {
+        color: #222;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid #999;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background: #eee;
+    }
+</style>
 </head>
 <body>
-    
+
+<h1>Oracles in DLCs: Function, Limitations, and Modern Solutions</h1>
+
+<h2>1. What Is an Oracle in DLCs?</h2>
+
+<p>
+In <em>Discreet Log Contracts</em> (DLCs), an <strong>oracle</strong> is an entity that publishes cryptographic
+signatures about real-world events, enabling Bitcoin contracts to settle based on verifiable outcomes 
+(e.g., prices, sports results, economic indices).
+</p>
+
+<p>To function as an oracle, an entity must:</p>
+
+<ul>
+    <li><strong>Pre-define</strong> which events it will observe.</li>
+    <li>Publicly <strong>commit</strong> to an oracle public key and message format.</li>
+    <li>Publish a <strong>Schnorr signature</strong> for the actual event result.</li>
+</ul>
+
+<p>
+Anyone can act as an oracle if they generate a key pair, disclose their public key and outcome encoding, 
+and ensure <strong>availability</strong> and <strong>authenticity</strong> of signatures.
+</p>
+
+<hr>
+
+<h2>2. Limitations of Oracle Power in DLCs</h2>
+
+<p>DLCs minimize trust by restricting the oracle’s influence:</p>
+
+<ul>
+    <li>The oracle does <strong>not know contract terms</strong> and does not participate in negotiation.</li>
+    <li>The oracle does <strong>not control funds</strong> — all transactions are pre-signed.</li>
+    <li>If an oracle <strong>lies</strong>, signing conflicting outcomes exposes its private key.</li>
+    <li><strong>Privacy</strong> hides which oracle or outcomes the contract uses.</li>
+</ul>
+
+<p>Thus, the oracle is essential, yet its direct power is limited.</p>
+
+<hr>
+
+<h2>3. Oracle Dilemmas</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Dilemma</th>
+    <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Centralization of Trust</td>
+    <td>Few dominant oracles create systemic risk.</td>
+</tr>
+<tr>
+    <td>Result Manipulability</td>
+    <td>Events may be influenced by actors with incentives.</td>
+</tr>
+<tr>
+    <td>Availability & Censorship</td>
+    <td>Missing or delayed signatures hinder settlement.</td>
+</tr>
+<tr>
+    <td>Security Risks</td>
+    <td>Compromised oracle keys undermine dependent contracts.</td>
+</tr>
+<tr>
+    <td>Regulatory Pressure</td>
+    <td>Oracles may face legal or compliance burdens.</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>4. Modern Solutions to the Oracle Problem</h2>
+
+<p>
+As blockchain applications scale, reliable oracles become critical. Research increasingly explores 
+<strong>Artificial Intelligence (AI)</strong> as a complementary inference and filtering layer—not a trustless replacement.
+</p>
+
+<blockquote>
+    “AI offers techniques that enhance oracle systems across anomaly detection, adversarial resistance,
+    intelligent node selection, automated fact extraction, and hybrid governance models.”
+</blockquote>
+
+<h3>AI-Enhanced Oracle Techniques</h3>
+
+<table>
+<thead>
+<tr>
+    <th>Topic</th>
+    <th>Description</th>
+    <th>Techniques</th>
+    <th>Applications / References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>AI for Anomaly Detection</td>
+    <td>Detects deviations in oracle inputs caused by technical errors or abnormal markets.</td>
+    <td>Isolation forests, LSTMs, Kalman filters, conformal prediction, graph models.</td>
+    <td>Chainlink; Band Protocol; Park et al. (2023); Ikeda et al. (2024).</td>
+</tr>
+<tr>
+    <td>Adversarial / Manipulative Behavior Detection</td>
+    <td>Identifies attacks like flash-loan manipulation or Sybil patterns.</td>
+    <td>Reinforcement learning, clustering, graph detection, LLM reasoning.</td>
+    <td>Abinivesh S (2025); Gao et al. (2025); Forta; Almi’Ani et al. (2023).</td>
+</tr>
+<tr>
+    <td>AI for Oracle Node Selection</td>
+    <td>Dynamically scores oracle nodes by reputation, accuracy, latency.</td>
+    <td>Bayesian RL, DRL, clustering, trust scoring.</td>
+    <td>BLOR (2022); TCODRL (2025); ETORM (2024).</td>
+</tr>
+<tr>
+    <td>Hybrid AI-Governance Models</td>
+    <td>Combines AI evaluation with DAO governance and cryptoeconomic incentives.</td>
+    <td>RL, staking/slashing, human-in-the-loop.</td>
+    <td>Supra (2025); API3; Augur; Kleros; Tellor.</td>
+</tr>
+<tr>
+    <td>AI-Driven Fact Extraction & Verification</td>
+    <td>Uses LLMs to interpret and verify external data before committing it on-chain.</td>
+    <td>LLMs, multi-agent reasoning, semantic voting, proof aggregation.</td>
+    <td>Chainlink LLM Oracle (2024); Supra (2025); Oraichain; C-LLM; SenteTruth.</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>5. Challenges Introduced by AI in Oracles</h2>
+
+<table>
+<thead>
+<tr>
+    <th>Core Challenge</th>
+    <th>Underlying Cause</th>
+    <th>Implication for Oracles</th>
+    <th>Key References</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>Model Imperfection</td>
+    <td>Volatile markets and unseen scenarios</td>
+    <td>False alerts or missed threats</td>
+    <td>Chandola (2009), Goodfellow (2016), OpenAI (2024)</td>
+</tr>
+<tr>
+    <td>Hallucinated or incorrect facts</td>
+    <td>LLMs generate plausible but wrong outputs</td>
+    <td>Erroneous on-chain actions</td>
+    <td>Same as above</td>
+</tr>
+<tr>
+    <td>False positives/negatives; bias; data drift</td>
+    <td>Narrow or outdated datasets</td>
+    <td>Unreliable reporting in unfamiliar conditions</td>
+    <td>Same as above</td>
+</tr>
+<tr>
+    <td>Model Drift Over Time</td>
+    <td>Evolving data patterns</td>
+    <td>Difficult to update in decentralized settings</td>
+    <td>Same as above</td>
+</tr>
+<tr>
+    <td>GIGO Principle (Garbage In, Garbage Out)</td>
+    <td>AI depends on input quality</td>
+    <td>Trustlessness hard to achieve; data source is still a trust point</td>
+    <td>Same as above</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h2>Final Summary</h2>
+
+<p>
+DLC oracles minimize trust through cryptography but face dilemmas around centralization, availability,
+and data integrity. Modern research proposes <strong>AI-augmented oracle architectures</strong> to improve anomaly
+detection, security, governance, and fact extraction. However, AI introduces new risks: hallucinations,
+bias, model drift, and dependency on high-quality data.
+</p>
+
+<p>
+AI should therefore be seen not as a replacement for trust assumptions but as a 
+<strong>supplementary inference layer</strong> enhancing oracle reliability without removing the need for robust system design.
+</p>
+
 </body>
 </html>
