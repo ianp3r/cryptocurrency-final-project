@@ -1,6 +1,30 @@
 ## Oracles in DLCs: Function, Limitations, and Dilemmas
 
-### 1. What Is an Oracle in the Context of DLCs?
+## 1. What is Bitcoins DLCs?
+
+In the world of cryptocurrencies, smart contract are a type of agreement that is scripted into the blockchains of bitcoin, rather than a simple transaction between users, in a way that the contract automatically executes once certain conditions are met, without the need of any intermediate or trust between the two parties of the agreement, improving transparency and efficiency when it comes to agreements. There exists a lot of types of smart contracts such as Pay-to-Public-Key-Hash (P2PKH), Multi-Signatures (Multisig) and Hashed Time Lock Contract (HTLC), among all this kinds of smart contracts, there is the one that’ll be the focus of this project, the Discreet Log Contract (or DLCs).
+
+The key component that differs the DLC from other smart contracts is the oracle, a third-party that helps to settle the contract and the payment after the agreement is made, but how can there be a third-party if it was said earlier that smart contracts do not have intermediaries? It all revolves around the fact that the oracle is not a participant in the exchange, but rather an outsider that brings news about the real world to Bitcoin’s data. The oracle is someone responsible for bringing real-world information to Bitcoin’s blockchains or, in other words, is just someone who is responsible for updating the blockchains about real-life events, not being directly involved in the contract and, therefore, not an intermediary in it. But why does real-life events matter in a Bitcoin transaction? 
+
+Discreet Log Contracts are used when someone wants to make a transaction depending on some real-life outcome (especially used for betting) and that’s where the oracle enters. A DLC is made when two parties agree on some contract that depends on the outcome of something in the real world, let’s imagine a scenario where we have 2 people, Alice and Bob, both agree to bet in the outcome of some football game in a way that, if team 1 win, Alice will receive the money they bet, on the other hand, if team 2 wins, Bob will get the money, when the match ends, it is known that team 1 won the game, so the oracle will update the system with that information, revealing that Alice won the bet and will receive the money. This scenario shows the importance of the oracle being someone that neither person (Alice and Bob) knows, or else, he could update the blockchain with an information that is not the real one, but would benefit the party that he knows.
+
+In the creation of a DLC, there are some important points: The first one is when an oracle announces an event, this happens when it signs a message containing the details of the event (when it’ll happen, what are the possible outcomes), after that, both parties agree on betting in one (or more) of the announcements of one or more oracles and establish a contract with attestation points (the outcomes each one bet on). Then, they put the amount bet in a 2-of-2 multi-signature wallet and sign it with their private keys, sending it to the blockchain, also signing 2 more transactions, the CETs (Contract Execution Transactions), spending from the output of the first one they made, each CET is locked by the attestation points they established in the contract and also need the signature of the oracle to be published. Later, when the event occurs, the oracle reveals the attestation secret corresponding to the outcome that happened, the winner then uses this secret to sign the transaction and publish it in the blockchain.
+
+Although betting is the most common example of use of DLCs, these contracts can be used for several other objectives, such as insurance contracts, since oracle-based transactions help trust-minimized (or even trustless) systems.
+
+## 2. Why DLC is not currently used?
+
+Even though DLCs bring various benefits to privacy, security and efficiency of transactions, also allowing new types of agreements, it still isn’t as used as other smart contracts, but why is that?  
+
+It’s mostly because of the lack of security that is still present in current DLCs, but what makes a DLC be considered secure?  
+
+The DLC security standard is analyzed in two major points. The first one revolves around the bet security or, in other words, if it is possible to guarantee to both parties that, at the end of the protocol, the coins are going to be distributed according to the agreement that was made in the start of the “bet”. The other point is if the oracle can be held accountable if the agreement is not fairly executed for any of the parts because of a malicious oracle, besides that, it must be impossible to blame an oracle for something that they didn’t do. If both of those requirements are met, then a DLC can be considered secure.
+
+Besides that, another point that explains this lack of security in this kind of contract is the great number of different known attacks that can be made on them. Common attacks include Oracle-on-Oracle rogue key attack (when a malicious oracle chooses their announcement nonce to cancel out an attestation point of another oracle, in a way that they can combine both events to produce the attestation secret by itself), Oracle Signature Forgery (when someone that hold powers over what an oracle is going to attest to gets them to attest to a combination of outcomes in a way that they can forge a Schnorr signature by using these attestations) and User-on-User rogue key attack (happens when a malicious user pick their public key to cancel out some oracle’s attestation so that they don’t need that attestation to claim the prize).  
+
+As we can see, a great part of the insecurity revolves around the existence and participation of the oracle in the contracts, so it’s safe to say that we urgently need a way to make oracle’s participation more secure, so that DLC can be broadly adopted. But, for that, we need to first deeply understand what is the oracle and what power they actually hold in a contract. 
+
+### 3. What Is an Oracle in the Context of DLCs?
 
 In the context of **Discreet Log Contracts (DLCs)**, an **oracle** is an entity that publishes cryptographic signatures about real-world events. These signatures allow Bitcoin financial contracts to be settled based on verifiable outcomes, such as asset prices, sports results, or economic indices.
 
@@ -16,7 +40,7 @@ Anyone can act as an oracle as long as they:
 - Share their public key and message format.
 - Ensure availability and authentication of signatures.
 
-### 2. Limitations of the Oracle’s Power in DLCs
+### 4. Limitations of the Oracle’s Power in DLCs
 
 DLCs are designed to minimize the amount of trust required in the oracle, using cryptographic properties to restrict its power. Key characteristics include:
 
@@ -33,7 +57,7 @@ DLCs are designed to minimize the amount of trust required in the oracle, using 
 
 These features create a system in which the oracle is essential but has minimal direct influence over contracts.
 
-### 3. Oracle Dilemmas
+### 5. Oracle Dilemmas
 
 Despite its cryptographic protections, the oracle model introduces dilemmas:
 
@@ -47,7 +71,7 @@ Despite its cryptographic protections, the oracle model introduces dilemmas:
 
 In summary, the oracle is the critical component connecting real-world events to Bitcoin via DLCs, but its existence introduces new risks and coordination challenges. DLC architecture significantly reduces the oracle’s power and trust requirements, yet it cannot completely eliminate the dilemmas associated with serving as an external source of truth.
 
-## 4. Modern Solutions to the Oracle Problem
+## 6. Modern Solutions to the Oracle Problem
 
 The pervasive integration of blockchain technology into various fields necessitates a corresponding focus on achieving enterprise-level mass adoption, a goal fundamentally dependent on the capabilities of smart contracts. This realization has catalyzed widespread academic and industrial research efforts directed at resolving the so-called *oracle problem*—a critical challenge to the utility of self-executing contracts. The ensuing work provides a systematic review of some of the existing literature on the oracle problem, concentrating specifically on the identification and assessment of potential mitigation strategies and solutions.
 
@@ -83,7 +107,7 @@ Overview of AI enhanced Oracle systems:
 
 ![Alt text](https://images-provider.frontiersin.org/api/ipx/w=410&f=webp/https://www.frontiersin.org/files/Articles/1682623/fbloc-08-1682623-HTML/image_m/fbloc-08-1682623-g001.jpg "Overview of AI use in Oracle")
 
-## 5. Conclusion
+## 7. Conclusion
 
 The oracle problem remains one of the most significant barriers to the widespread adoption of blockchain technology, as smart contracts fundamentally rely on accurate and trustworthy external data to function correctly. Despite considerable progress in both academic and industry-led initiatives, no single solution has fully resolved the tension between trust minimization, data reliability, and adversarial resilience. Recent developments, however, point toward the growing relevance of Artificial Intelligence (AI) as a complementary layer within oracle architectures rather than a replacement for existing trust assumptions.
 
@@ -114,3 +138,23 @@ In summary, AI offers one of the most compelling and flexible avenues for addres
 9. NDSS Symposium (2023). *FALCON: Secure Oracle Designs for Blockchain Systems*. Retrieved from https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f24_paper.pdf
 
 10. Caldarelli, G., et al. (2025). *AI-Assisted Oracle Models for Blockchain Security*. arXiv:2507.02125. Retrieved from https://arxiv.org/abs/2507.02125
+
+11. Dryja, T. (2017). Discreet Log Contracts. MIT DCI. Retrieved from https://www.dci.mit.edu/s/discreet-log-contracts-paper.pdf
+
+12. Alwen, J., Fuchsbauer, G., et al. (2023). Cryptographic Oracle-Based Conditional Payments. NDSS Symposium. Retrieved from https://www.ndss-symposium.org/wp-content/uploads/2023-24-paper.pdf
+
+13. Zhang, R., Cecchetti, E., et al. (2023). From Reality Keys to Oraclize: A Deep Dive into the History of Bitcoin Oracles. arXiv:2302.07911. Retrieved from https://arxiv.org/abs/2302.07911
+
+14. Zamyatin, A., et al. (2020). A First Look into DeFi Oracles. arXiv:2005.04377. Retrieved from https://arxiv.org/abs/2005.04377
+
+15. Bitlayer Research Group. (2024). Analysis of DLC Principles and Optimization Thoughts. Retrieved from https://www.chaincatcher.com/en/article/2119259
+
+16. Trust Machines. Discreet Log Contracts (DLCs): A Deep Dive. Retrieved from https://trustmachines.co/learn/discreet-log-contracts-dlcs/
+
+17. Bitcoin Magazine. (2023). DLCs Are Evolving to Meet Institutional Needs. Retrieved from https://bitcoinmagazine.com/technical/dlcs-evolving-to-meet-institutional-needs
+
+18. Bitcoin Problems. Secure Discreet Log Contracts. Retrieved from https://bitcoinproblems.org/problems/secure-dlcs.html
+
+19. Kuwahara, I., et al. (2023). Off-Chain Discreet Log Contracts for Lightning Network Integration. Retrieved from https://cointhinktank.com/upload/offchaindlc.pdf
+
+20. DLC Markets Research Group. (2024). A Non-Custodial Bitcoin Derivatives Trading System. Retrieved from https://dlcmarkets.com/whitepaper.pdf
