@@ -74,10 +74,11 @@ A number of issues arise:
 | Core challenges | Underlying causes | Implications for oracles | Key references |
 |-----------------|-------------------|---------------------------|----------------|
 | AI models are inherently imperfect; they can hallucinate, misclassify, or underperform in new contexts | High volatility in DeFi markets increases the difficulty of precise anomaly detection | False alerts or missed threats may lead to smart contract failures | Chandola et al. (2009), Gama et al. (2014), Goodfellow et al. (2016), Kilkenny and Robinson (2018), López de Prado (2018), OpenAI et al. (2024), Supra (2025) |
-| They are vulnerable to false positives/negatives, data drift, hallucinations, and biases from training data | LLMs may generate plausible but incorrect content (“hallucinations”) | Hallucinated facts could trigger erroneous on-chain actions |  |
-|  | Models trained on narrow datasets may fail in new domains (data bias) | Biased or outdated models may misreport data in unfamiliar conditions |  |
-|  | Over time, changing data patterns lead to model drift or degradation | Decentralized retraining and updating are difficult and slow |  |
-|  | GIGO principle: AI output is only as good as the data input | Full trustlessness cannot be guaranteed, as data source trust is still needed |  |
+| They are vulnerable to false positives/negatives, data drift, hallucinations, and biases from training data | LLMs may generate plausible but incorrect content (“hallucinations”) | Hallucinated facts could trigger erroneous on-chain actions | same as above |
+| same as above | Models trained on narrow datasets may fail in new domains (data bias) | Biased or outdated models may misreport data in unfamiliar conditions | same as above |
+| same as above | Over time, changing data patterns lead to model drift or degradation | Decentralized retraining and updating are difficult and slow | same as above |
+| same as above | GIGO principle: AI output is only as good as the data input | Full trustlessness cannot be guaranteed, as data source trust is still needed | same as above |
+
 
 
 
