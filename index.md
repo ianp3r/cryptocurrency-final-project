@@ -79,7 +79,17 @@ A number of issues arise:
 | same as above | Over time, changing data patterns lead to model drift or degradation | Decentralized retraining and updating are difficult and slow | same as above |
 | same as above | GIGO principle: AI output is only as good as the data input | Full trustlessness cannot be guaranteed, as data source trust is still needed | same as above |
 
+Overview of AI enhanced Oracle systems: 
 
+![Alt text](https://images-provider.frontiersin.org/api/ipx/w=410&f=webp/https://www.frontiersin.org/files/Articles/1682623/fbloc-08-1682623-HTML/image_m/fbloc-08-1682623-g001.jpg "Overview of AI use in Oracle")
 
+## 5. Conclusion
 
+The oracle problem remains one of the most significant barriers to the widespread adoption of blockchain technology, as smart contracts fundamentally rely on accurate and trustworthy external data to function correctly. Despite considerable progress in both academic and industry-led initiatives, no single solution has fully resolved the tension between trust minimization, data reliability, and adversarial resilience. Recent developments, however, point toward the growing relevance of Artificial Intelligence (AI) as a complementary layer within oracle architectures rather than a replacement for existing trust assumptions.
+
+AI-driven techniques—ranging from anomaly detection and adversarial behavior monitoring to intelligent node selection and automated fact verification—demonstrate promising capabilities in enhancing the robustness and responsiveness of oracle systems. These methods introduce adaptive, data-driven mechanisms capable of identifying subtle irregularities, mitigating manipulative attacks, and improving the overall quality of external inputs fed into smart contracts. Furthermore, emerging hybrid governance models suggest a future in which AI augments decentralized decision-making through transparent scoring, staking incentives, and human-in-the-loop validation.
+
+Nevertheless, integrating AI into blockchain oracles introduces its own set of challenges. The inherent limitations of contemporary AI systems—including non-determinism, bias, vulnerability to data drift, and hallucinations—risk transferring well-known AI weaknesses into trust-minimized environments. This underscores the reality that AI-enhanced oracles cannot eliminate trust entirely; they instead redistribute and refine it. Ensuring the reliability of AI-supported systems requires continuous monitoring, rigorous model evaluation, and careful handling of data sources.
+
+In summary, AI offers one of the most compelling and flexible avenues for addressing key aspects of the oracle problem, but it is not a panacea. The path forward will require a synthesis of cryptoeconomic incentives, distributed governance, robust data engineering, and responsible AI deployment. By embracing AI as a strategic enhancement rather than a total solution, the blockchain ecosystem can move closer to achieving the reliability and scalability necessary for true mass adoption.
 
